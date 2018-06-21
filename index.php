@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>ろくまる農園</title>
+        <title>中古教科書フリマシステム</title>
     </head>
     <body>
       <?php

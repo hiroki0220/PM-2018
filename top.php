@@ -4,12 +4,12 @@ session_regenerate_id(true);
 if(isset($_SESSION['login'])==false)
 {
 	print 'ログインされていません。<br />';
-	print '<a href="../staff_login/staff_login.html">ログイン画面へ</a>';
+	print '<a href="./account_login/login.html">ログイン画面へ</a>';
 	exit();
 }
 else
 {
-	print $_SESSION['staff_name'];
+	print $_SESSION['name'];
 	print 'さんログイン中<br />';
 	print '<br />';
 }
@@ -19,7 +19,7 @@ else
 <html>
 <head>
 <meta charset="UTF-8">
-<title> ろくまる農園</title>
+<title> 中古教科書フリマシステム</title>
 </head>
 <body>
 
@@ -31,7 +31,7 @@ else
 <br />
 <a href="../order/order_download.php">マイページ</a><br />
 <br />
-<a href="staff_logout.php">ログアウト</a><br />
+<a href="./account_login/logout.php">ログアウト</a><br />
 
 </body>
 </html>
