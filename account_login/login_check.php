@@ -19,7 +19,7 @@ $dbPass = '';
 $db= new PDO($dsn,$dbUser,$dbPass);
 $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-$sql='SELECT name FROM customers WHERE mail=? AND password=?';
+$sql='SELECT name,id FROM customers WHERE mail=? AND password=?';
 $prepare=$db->prepare($sql);
 $data[]=$mail;
 $data[]=$pass;
@@ -40,6 +40,7 @@ else
 	$_SESSION['login']=1;
 	$_SESSION['mail']=$mail;
 	$_SESSION['name']=$result['name'];
+	$_SESSION['id']=$result['id'];
 	header('Location:../top.php');
 	exit();
 }
