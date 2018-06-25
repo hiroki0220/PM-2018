@@ -27,11 +27,16 @@ else
 <br />
 <a href="">出品</a><br />
 <br />
-<a href="../product/pro_list.php">商品検索</a><br />
-<br />
+
 <a href="../order/order_download.php">マイページ</a><br />
 <br />
 <a href="./account_login/logout.php">ログアウト</a><br />
 
+<form method = "post" action = "./buy/search.php">
+<input type = "text" name = "keyword" "style="width:200px">
+<input type="submit" value="検索">
+</form>
+
+<br />
 </body>
 </html>

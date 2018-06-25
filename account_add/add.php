@@ -6,7 +6,7 @@
 </head>
 <body>
 
-スタッフ追加 <br/>
+アカウント登録 <br/>
 <br/>
 <form method="post"action="add_check.php">
 名前を入力してください。 <br/>
