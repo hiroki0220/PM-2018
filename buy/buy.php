@@ -18,7 +18,6 @@ else
 
     $id = $_GET['id'];
     $id= htmlspecialchars($id,ENT_QUOTES,'UTF-8');
-    print("$id<br>\n");
     try{
         $dbServer = '127.0.0.1';
         $dbName = 'yabukib';
