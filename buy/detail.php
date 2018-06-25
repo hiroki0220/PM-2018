@@ -72,6 +72,7 @@ echo "<br>";?>
 <br>商品価格<br>
 <?php
 echo $price;
+echo "円";
 echo "<br>";
 ?>
 <br>商品ステータス<br>
@@ -84,9 +85,12 @@ echo $memo;
 echo "<br>";
 ?>
 
-<form method="get" action="../top.php">
+<form method="get" action="./buy.php"> 
+        <input name="id" type="hidden" value="<?php echo $id; ?>">
+        <p><input type="submit" value="購入"></p>
+</form>
+<form method="get" action="../top.php"> 
         <p><input type="submit" value="トップへ"></p>
 </form>
-
 </body>
 </html>
