@@ -3,15 +3,15 @@ session_start();
 session_regenerate_id(true);
 if(isset($_SESSION['login'])==false)
 {
-	print 'ログインされていません。<br />';
-	print '<a href="./account_login/login.html">ログイン画面へ</a>';
+	echo 'ログインされていません。<br />';
+	echo '<a href="./account_login/login.html">ログイン画面へ</a>';
 	exit();
 }
 else
 {
-	print $_SESSION['name'];
-	print 'さんログイン中<br />';
-	print '<br />';
+	echo $_SESSION['name'];
+	echo 'さんログイン中<br />';
+	echo '<br />';
 }
 ?>
 <?php

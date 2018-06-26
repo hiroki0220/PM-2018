@@ -31,8 +31,8 @@ $result=$prepare->fetch(PDO::FETCH_ASSOC);
 
 if($result==false)
 {
-	print 'メールアドレスかパスワードが間違っています。<br />';
-	print '<a href="login.html"> 戻る</a>';
+	echo 'メールアドレスかパスワードが間違っています。<br />';
+	echo '<a href="login.html"> 戻る</a>';
 }
 else
 {
@@ -48,7 +48,7 @@ else
 }
 catch(Exception $e)
 {
-	print 'ただいま障害により大変ご迷惑をお掛けしております。';
+	echo 'ただいま障害により大変ご迷惑をお掛けしております。';
 	exit();
 }
 

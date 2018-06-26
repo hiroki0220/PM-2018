@@ -12,8 +12,8 @@ and open the template in the editor.
     <body>
       <?php
         // put your code here
-		print '<a href="./account_add/add.php">新規登録画面</a><br />';
-		print '<a href="./account_login/login.html">ログイン画面</a><br />';
+		echo '<a href="./account_add/add.html">新規登録画面</a><br />';
+		echo '<a href="./account_login/login.html">ログイン画面</a><br />';
         ?>
     </body>
 </html>
