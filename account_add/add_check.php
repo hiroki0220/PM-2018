@@ -24,75 +24,75 @@ $pass2= htmlspecialchars($pass2,ENT_QUOTES,'UTF-8');
 
 if($name=='')
 {
-	print'名前が入力されていません。<br/>';
+	echo'名前が入力されていません。<br/>';
 }
 else
 {
-	print'名前:';
-	print $name;
-	print'<br/>';
+	echo'名前:';
+	echo $name;
+	echo'<br/>';
 }
 if($address=='')
 {
-	print'住所が入力されていません。<br/>';
+	echo'住所が入力されていません。<br/>';
 }
 else
 {
-	print'住所:';
-	print $address;
-	print'<br/>';
+	echo'住所:';
+	echo $address;
+	echo'<br/>';
 }
 if($tel=='')
 {
-	print'電話番号が入力されていません。<br/>';
+	echo'電話番号が入力されていません。<br/>';
 }
 else
 {
-	print'電話番号:';
-	print $tel;
-	print'<br/>';
+	echo'電話番号:';
+	echo $tel;
+	echo'<br/>';
 }
 if($mail=='')
 {
-	print'メールアドレスが入力されていません。<br/>';
+	echo'メールアドレスが入力されていません。<br/>';
 }
 else
 {
-	print'メールアドレス:';
-	print $mail;
-	print'<br/>';
+	echo'メールアドレス:';
+	echo $mail;
+	echo'<br/>';
 }
 
 if($pass=='')
 {
-	print'パスワードが入力されていません。<br/>';
+	echo'パスワードが入力されていません。<br/>';
 }
 
 if($pass!=$pass2)
 {
-	print'パスワードが一致しません。<br/>';
+	echo'パスワードが一致しません。<br/>';
 }
 
 if($name==''||$address==''||$tel==''||$mail==''||$pass==''||$pass!=$pass2)
 {
-	print'<form>';
-	print'<input type="button"onclick="history.back()"value="戻る">';
-	print'</form>';
+	echo'<form>';
+	echo'<input type="button"onclick="history.back()"value="戻る">';
+	echo'</form>';
 }
 else
 {
 	$pass=md5($pass);
-	print'<form method="post"action="add_done.php">';
-	print'<input type="hidden"name="name"value="'.$name.'">';
-	print'<input type="hidden"name="address"value="'.$address.'">';
-	print'<input type="hidden"name="tel"value="'.$tel.'">';
-	print'<input type="hidden"name="mail"value="'.$mail.'">';
-	print'<input type="hidden"name="pass"value="'.$pass.'">';
-	print'<br/>';
-	print'上記の内容で追加しますか？<br/>';
-	print'<input type="button"onclick="history.back()"value="戻る">';
-	print'<input type="submit"value="OK">';
-	print'</form>';
+	echo'<form method="post"action="add_done.php">';
+	echo'<input type="hidden"name="name"value="'.$name.'">';
+	echo'<input type="hidden"name="address"value="'.$address.'">';
+	echo'<input type="hidden"name="tel"value="'.$tel.'">';
+	echo'<input type="hidden"name="mail"value="'.$mail.'">';
+	echo'<input type="hidden"name="pass"value="'.$pass.'">';
+	echo'<br/>';
+	echo'上記の内容で追加しますか？<br/>';
+	echo'<input type="button"onclick="history.back()"value="戻る">';
+	echo'<input type="submit"value="OK">';
+	echo'</form>';
 }
 
 ?>

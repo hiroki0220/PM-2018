@@ -46,20 +46,20 @@ try
 
   $db = null;
 
-  print $name;
-  print'さんを追加しました。 <br/>';
+  echo $name;
+  echo'さんを追加しました。 <br/>';
 
 
 }
 
   catch (Exception $e)
   {
-    print'ただいま障害により大変ご迷惑をおかけしております。';
+    echo'ただいま障害により大変ご迷惑をおかけしております。';
     exit();
   }
 
  ?>
 
- <a href="../top.php">戻る</a>
+ <a href="../account_login/login.html">ログイン画面へ</a>
 </body>
 </html>

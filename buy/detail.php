@@ -3,15 +3,15 @@ session_start();
 session_regenerate_id(true);
 if(isset($_SESSION['login'])==false)
 {
-	print 'ログインされていません。<br />';
-	print '<a href="./account_login/login.html">ログイン画面へ</a>';
+	echo 'ログインされていません。<br />';
+	echo '<a href="./account_login/login.html">ログイン画面へ</a>';
 	exit();
 }
 else
 {
-	print $_SESSION['name'];
-	print 'さんログイン中<br />';
-	print '<br />';
+	echo $_SESSION['name'];
+	echo 'さんログイン中<br />';
+	echo '<br />';
 }
 ?>
 <?php
@@ -50,7 +50,7 @@ try{
 } 
 catch(Exception $e)
 {
-	print 'ただいま障害により大変ご迷惑をお掛けしております。';
+	echo 'ただいま障害により大変ご迷惑をお掛けしております。';
 	exit();
 }
 
@@ -85,6 +85,13 @@ echo $memo;
 echo "<br>";
 ?>
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 中古教科書フリマシステム </title>
+</head>
+<body>
 <form method="get" action="./buy.php"> 
         <input name="id" type="hidden" value="<?php echo $id; ?>">
         <p><input type="submit" value="購入"></p>
