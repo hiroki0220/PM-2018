@@ -26,7 +26,7 @@ else
 トップメニュー<br />
 <br />
 
-<form action="./sell/sell.html">
+<form action="./sell/sell_form.php">
 <button>出品</button> 
 </form>
 
