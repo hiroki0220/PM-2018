@@ -28,16 +28,20 @@
         <br />
         <br />
         <form method="post" action="sell_check.php" enctype="multipart/form-data">
-            画像を選んでください。
+        
+        画像を選んでください。
             <br />
-            <input type="file" name="gazou" style="width:400px">
+            <input type="file" name="image" style="width:400px">
+            <br />
+            画像形式を入力してください。<br>
+            <input type="text" name="type" style="width:400px">
             <br /> 商品名を入力してください。
             <br />
             <input type="text" name="name" style="width:200px">
             <br /> 価格を入力してください。
             <br />
             <input type="text" name="price" style="width:50px">
-            <br /> 商品ステータスを入力してください。
+            <br /> 商品状態を入力してください。
             <br>
             <select name="status">
                 <option value="未使用">未使用</option>

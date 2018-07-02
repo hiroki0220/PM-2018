@@ -48,7 +48,7 @@ foreach ($result as $person) {
 		$type = $person['type'];
 		$image = base64_encode($person['image']);
 		echo '<a href="detail.php?id='.$person['id'].'">';
-		echo "<br><img src='data:${type};base64,${image}'><br>";
+		echo "<br><img src='data:$type;base64,$image'><br>";
 		echo "</a>";
 	  } else {//画像がない場合
 		echo "画像なし"; //2重引用符の中に変数を書くと展開される。
