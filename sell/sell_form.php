@@ -80,7 +80,6 @@ if (isset($_POST['name'])) {
         画像を選んでください。
             <br />
             <input type="file" name="image" style="width:400px">
-
             <br /> 商品名を入力してください。
             <br />
             <input type="text" name="name" style="width:200px">
