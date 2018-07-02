@@ -48,7 +48,7 @@ foreach ($result as $person) {
 		$type = $person['type'];
 		$image = base64_encode($person['image']);
 		echo '<a href="detail.php?id='.$person['id'].'">';
-		echo "<br><img src='data:${type};base64,${image}'><br>";
+		echo "<br><img src='data:$type;base64,$image'><br>";
 		echo "</a>";
 	  } else {//画像がない場合
 		echo "画像なし"; //2重引用符の中に変数を書くと展開される。
@@ -83,7 +83,7 @@ catch(Exception $e)
 <title> 中古教科書フリマシステム </title>
 </head>
 <body>
-<form method="get" action="../top.php"> 
+<form  action="../top.php"> 
         <p><input type="submit" value="トップへ"></p>
 </form>
 </body>
