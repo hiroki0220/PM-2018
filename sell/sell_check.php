@@ -49,8 +49,9 @@ if (isset($_FILES['image'])) {
 		$w = 200;
 		
 		$file = $_FILES['image']['tmp_name']; // 加工したいファイルを指定
+		$angle = 270;
 		
-		
+
 		// 加工前の画像の情報を取得
 		list($original_w, $original_h, $type) = getimagesize($file);
 		
@@ -74,6 +75,8 @@ if (isset($_FILES['image'])) {
 		}
 		// echo $mine;
 		// 新しく描画するキャンバスを作成
+		$original_image = imagerotate($original_image,$angle,0);
+
 		$canvas = imagecreatetruecolor($w, $h);
 		imagecopyresampled($canvas, $original_image, 0,0,0,0, $w, $h, $original_w, $original_h);
 		
@@ -94,7 +97,7 @@ if (isset($_FILES['image'])) {
 		// 読み出したファイルは消去
 		imagedestroy($original_image);
 		imagedestroy($canvas);
-		
+
 		echo $mine;
 		$mine = 'image/'.$mine.'';
 		echo $mine;
