@@ -28,7 +28,7 @@ else
         $db= new PDO($dsn,$dbUser,$dbPass);
         $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-        $sql='UPDATE products SET buyer_id=:buyer_id WHERE id = :pro_id;';
+        $sql='UPDATE products SET buyer_id=:buyer_id WHERE id = :pro_id';
         $prepare=$db->prepare($sql);
         $prepare->bindValue(':buyer_id',$_SESSION['id'], PDO::PARAM_INT);
         $prepare->bindValue(':pro_id',$_GET['id'], PDO::PARAM_INT);
