@@ -73,10 +73,12 @@ if (isset($_FILES['image'])) {
 			throw new RuntimeException('対応していないファイル形式です。: ', $type);
 		}
 
+		// 画像の向き(Exif)を取得(8段階)
 		$exif = @exif_read_data($file);
 		if(isset($exif["Orientation"])){
 			$orientation = $exif["Orientation"];
 			// echo $exif["Orientation"];
+			// 向きで回転するべき角度を判別
 			if($original_image){
 				if($orientation == 3){
 					$original_image = imagerotate($original_image,180,0);
