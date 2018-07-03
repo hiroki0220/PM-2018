@@ -49,7 +49,6 @@ if (isset($_FILES['image'])) {
 		$w = 200;
 		
 		$file = $_FILES['image']['tmp_name']; // 加工したいファイルを指定
-		$angle = 270;
 		
 
 		// 加工前の画像の情報を取得
@@ -73,10 +72,34 @@ if (isset($_FILES['image'])) {
 			default:
 			throw new RuntimeException('対応していないファイル形式です。: ', $type);
 		}
+
+		$exif = @exif_read_data($file);
+		if(isset($exif["Orientation"])){
+			$orientation = $exif["Orientation"];
+			// echo $exif["Orientation"];
+			if($original_image){
+				if($orientation == 3){
+					$original_image = imagerotate($original_image,180,0);
+				}
+				else if($orientation == 5){
+					$original_image = imagerotate($original_image,270,0);
+				}
+				else if($orientation == 6){
+					$original_image = imagerotate($original_image,270,0);
+				}
+				else if($orientation == 7){
+					$original_image = imagerotate($original_image,90,0);
+				}
+				else if($orientation == 8){
+					$original_image = imagerotate($original_image,90,0);
+				}
+				// else{
+				// 	echo '正常';
+				// }
+			}
+		}
 		// echo $mine;
 		// 新しく描画するキャンバスを作成
-		$original_image = imagerotate($original_image,$angle,0);
-
 		$canvas = imagecreatetruecolor($w, $h);
 		imagecopyresampled($canvas, $original_image, 0,0,0,0, $w, $h, $original_w, $original_h);
 		
