@@ -16,7 +16,7 @@
 ?>
 <?php
 
-
+try{
 
 // $image=$_FILES['image'];
 // $image=$_POST['image'];
@@ -33,24 +33,24 @@ $status= htmlspecialchars($status,ENT_QUOTES,'UTF-8');
 $memo= htmlspecialchars($memo,ENT_QUOTES,'UTF-8');
 
 
-if (isset($_FILES['image'])) {
-	// $tmp_name = $_FILES['image']['tmp_name'];
-	// if ($tmp_name != '') {//ファイルがアップロードされた
-        //     //ファイルタイプを確認する☆レシピ124☆の準備が必要
-        //     $finfo = new finfo(FILEINFO_MIME_TYPE);
-        //     $type = $finfo->file($tmp_name);
-        //     //アップロードされ，一時保管されたファイルを読み出す
-        //     $file = fopen($_FILES['image']['tmp_name'], 'rb');
-		// 	$image = fread($file, $_FILES['image']['size']);
-		// 	$image = base64_encode($image);
-		// 	echo "<br><img src='data:$type;base64,$image'><br>";
+// $tmp_name = $_FILES['image']['tmp_name'];
+// if ($tmp_name != '') {//ファイルがアップロードされた
+	//     //ファイルタイプを確認する☆レシピ124☆の準備が必要
+	//     $finfo = new finfo(FILEINFO_MIME_TYPE);
+	//     $type = $finfo->file($tmp_name);
+	//     //アップロードされ，一時保管されたファイルを読み出す
+	//     $file = fopen($_FILES['image']['tmp_name'], 'rb');
+	// 	$image = fread($file, $_FILES['image']['size']);
+	// 	$image = base64_encode($image);
+	// 	echo "<br><img src='data:$type;base64,$image'><br>";
 		
-		$h = 200; // リサイズしたい大きさを指定
-		$w = 200;
-		
-		$file = $_FILES['image']['tmp_name']; // 加工したいファイルを指定
-		
-
+	$h = 200; // リサイズしたい大きさを指定
+	$w = 200;
+	
+	$file = $_FILES['image']['tmp_name']; // 加工したいファイルを指定
+	
+	
+	if (empty($file)!=true) {
 		// 加工前の画像の情報を取得
 		list($original_w, $original_h, $type) = getimagesize($file);
 		
@@ -123,16 +123,8 @@ if (isset($_FILES['image'])) {
 		imagedestroy($original_image);
 		imagedestroy($canvas);
 
-		echo $mine;
 		$mine = 'image/'.$mine.'';
-		echo $mine;
-		// echo $resize_path;
-		// $file = $resize_path;
-		
-		
-		
-		// header('Content-Type: '.$mine.'');
-		// readfile(''.$resize_path.'');
+
 		$image=$resize_path;
             $file = fopen($image, 'rb');
 			$image = fread($file, $_FILES['image']['size']);
@@ -142,7 +134,7 @@ if (isset($_FILES['image'])) {
 	}
 	
 	else {
-		echo "画像が入力されていません<br/>";
+		echo "画像が入力されていません。<br/>";
 	}
 	if($name=='')
 	{
@@ -207,4 +199,7 @@ if (isset($_FILES['image'])) {
 		echo'<input type="submit"value="OK">';
 		echo'</form>';
 	}
+}
+catch(Exception $e){	echo '対応していないファイル形式です。';
+	exit();}
 	?>
