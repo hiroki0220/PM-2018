@@ -55,6 +55,20 @@ else
     }
 
 ?>
-<form method="get" action="../top.php"> 
-        <p><input type="submit" value="トップへ"></p>
-</form>
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title> 中古教科書フリマシステム</title>
+    </head>
+
+    <body>
+    <form method="get" action="../top.php"> 
+    <p><input type="submit" value="トップへ"></p>
+    </form>
+	</body>
+
+</html>
