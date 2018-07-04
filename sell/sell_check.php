@@ -53,9 +53,20 @@ $memo= htmlspecialchars($memo,ENT_QUOTES,'UTF-8');
 	// 	$image = fread($file, $_FILES['image']['size']);
 	// 	$image = base64_encode($image);
 	// 	echo "<br><img src='data:$type;base64,$image'><br>";
-		
-	$h = 200; // リサイズしたい大きさを指定
-	$w = 200;
+	function ua_smt (){
+//ユーザーエージェントを取得
+$ua = $_SERVER['HTTP_USER_AGENT'];
+//スマホと判定する文字リスト
+$ua_list = array('iPhone','iPad','iPod','Android');
+ foreach ($ua_list as $ua_smt) {
+//ユーザーエージェントに文字リストの単語を含む場合はTRUE、それ以外はFALSE
+  if (strpos($ua, $ua_smt) !== false) {
+   return true;
+  }
+ } return false;
+}	
+	$h = 160; // リサイズしたい大きさを指定
+	$w = 90;
 	
 	$file = $_FILES['image']['tmp_name']; // 加工したいファイルを指定
 	
@@ -82,34 +93,38 @@ $memo= htmlspecialchars($memo,ENT_QUOTES,'UTF-8');
 			default:
 			throw new RuntimeException('対応していないファイル形式です。: ', $type);
 		}
-
-		// 画像の向き(Exif)を取得(8段階)
-		$exif = @exif_read_data($file);
-		if(isset($exif["Orientation"])){
-			$orientation = $exif["Orientation"];
-			// echo $exif["Orientation"];
-			// 向きで回転するべき角度を判別
-			if($original_image){
-				if($orientation == 3){
-					$original_image = imagerotate($original_image,180,0);
-				}
-				else if($orientation == 5){
-					$original_image = imagerotate($original_image,270,0);
-				}
-				else if($orientation == 6){
-					$original_image = imagerotate($original_image,270,0);
-				}
-				else if($orientation == 7){
-					$original_image = imagerotate($original_image,90,0);
-				}
-				else if($orientation == 8){
-					$original_image = imagerotate($original_image,90,0);
-				}
-				// else{
-				// 	echo '正常';
-				// }
+if (ua_smt() == true) {
+	//スマホの場合の処理
+	// 画像の向き(Exif)を取得(8段階)
+	$exif = @exif_read_data($file);
+	if(isset($exif["Orientation"])){
+		$orientation = $exif["Orientation"];
+		// echo $exif["Orientation"];
+		// 向きで回転するべき角度を判別
+		if($original_image){
+			if($orientation == 3){
+				$original_image = imagerotate($original_image,180,0);
 			}
+			else if($orientation == 5){
+				$original_image = imagerotate($original_image,270,0);
+			}
+			else if($orientation == 6){
+				$original_image = imagerotate($original_image,270,0);
+			}
+			else if($orientation == 7){
+				$original_image = imagerotate($original_image,90,0);
+			}
+			else if($orientation == 8){
+				$original_image = imagerotate($original_image,90,0);
+			}
+			// else{
+			// 	echo '正常';
+			// }
 		}
+	}
+} else {
+ //それ以外の場合の処理
+}
 		// echo $mine;
 		// 新しく描画するキャンバスを作成
 		$canvas = imagecreatetruecolor($w, $h);
