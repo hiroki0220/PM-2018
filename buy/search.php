@@ -4,7 +4,7 @@ session_regenerate_id(true);
 if(isset($_SESSION['login'])==false)
 {
 	echo 'ログインされていません。<br />';
-	echo '<a href="./account_login/login.html">ログイン画面へ</a>';
+	echo '<a href="../account_login/login.html">ログイン画面へ</a>';
 	exit();
 }
 else
@@ -48,7 +48,7 @@ foreach ($result as $person) {
 		$type = $person['type'];
 		$image = base64_encode($person['image']);
 		echo '<a href="detail.php?id='.$person['id'].'">';
-		echo "<br><img src='data:${type};base64,${image}'><br>";
+		echo "<br><img src='data:$type;base64,$image'><br>";
 		echo "</a>";
 	  } else {//画像がない場合
 		echo "画像なし"; //2重引用符の中に変数を書くと展開される。
@@ -80,10 +80,11 @@ catch(Exception $e)
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title> 中古教科書フリマシステム </title>
 </head>
 <body>
-<form method="get" action="../top.php"> 
+<form  action="../top.php"> 
         <p><input type="submit" value="トップへ"></p>
 </form>
 </body>

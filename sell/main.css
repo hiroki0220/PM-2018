@@ -1,0 +1,6 @@
+/* 全体(デスクトップPCとスマホ)に適用するCSS */
+.wrapper
+{
+    float: left;
+	/* overflow: hidden ;		floatを解除する */
+}

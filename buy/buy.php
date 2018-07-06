@@ -4,7 +4,7 @@ session_regenerate_id(true);
 if(isset($_SESSION['login'])==false)
 {
 	echo 'ログインされていません。<br />';
-	echo '<a href="./account_login/login.html">ログイン画面へ</a>';
+	echo '<a href="../account_login/login.html">ログイン画面へ</a>';
 	exit();
 }
 else
@@ -28,7 +28,7 @@ else
         $db= new PDO($dsn,$dbUser,$dbPass);
         $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-        $sql='UPDATE products SET buyer_id=:buyer_id WHERE id = :pro_id;';
+        $sql='UPDATE products SET buyer_id=:buyer_id WHERE id = :pro_id';
         $prepare=$db->prepare($sql);
         $prepare->bindValue(':buyer_id',$_SESSION['id'], PDO::PARAM_INT);
         $prepare->bindValue(':pro_id',$_GET['id'], PDO::PARAM_INT);
@@ -55,6 +55,20 @@ else
     }
 
 ?>
-<form method="get" action="../top.php"> 
-        <p><input type="submit" value="トップへ"></p>
-</form>
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title> 中古教科書フリマシステム</title>
+    </head>
+
+    <body>
+    <form method="get" action="../top.php"> 
+    <p><input type="submit" value="トップへ"></p>
+    </form>
+	</body>
+
+</html>
