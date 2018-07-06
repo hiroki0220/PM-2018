@@ -30,7 +30,7 @@ else
 <button>出品</button> 
 </form>
 
-<a href="../order/order_download.php">マイページ</a><br />
+<a href="./mypage/mypage.php">マイページ</a><br />
 <br />
 <a href="./account_login/logout.php">ログアウト</a><br />
 

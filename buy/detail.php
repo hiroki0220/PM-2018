@@ -85,13 +85,7 @@ echo $memo;
 echo "<br>";
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title> 中古教科書フリマシステム </title>
-</head>
-<body>
+
 <form method="get" action="./buy.php"> 
         <input name="id" type="hidden" value="<?php echo $id; ?>">
         <p><input type="submit" value="購入"></p>
