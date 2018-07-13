@@ -1,66 +1,61 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title> 中古教科書フリマシステム </title>
-</head>
-<body>
-
 <?php
 
 try
 {
 
-  $name = $_POST['name'];
-  $address = $_POST['address'];
-  $tel = $_POST['tel'];
-  $mail = $_POST['mail'];
-  $pass = $_POST['pass'];
+$name = $_POST['name'];
+$address = $_POST['address'];
+$tel = $_POST['tel'];
+$mail = $_POST['mail'];
+$pass = $_POST['pass'];
 
-  $name = htmlspecialchars($name,ENT_QUOTES,'UTF-8');
-  $address= htmlspecialchars($address,ENT_QUOTES,'UTF-8');
-  $tel= htmlspecialchars($tel,ENT_QUOTES,'UTF-8');
-  $mail= htmlspecialchars($mail,ENT_QUOTES,'UTF-8');
-  $pass = htmlspecialchars($pass,ENT_QUOTES,'UTF-8');
+$name = htmlspecialchars($name,ENT_QUOTES,'UTF-8');
+$address= htmlspecialchars($address,ENT_QUOTES,'UTF-8');
+$tel= htmlspecialchars($tel,ENT_QUOTES,'UTF-8');
+$mail= htmlspecialchars($mail,ENT_QUOTES,'UTF-8');
+$pass = htmlspecialchars($pass,ENT_QUOTES,'UTF-8');
 
-  //データベース接続設定
-  $dbServer = '127.0.0.1';
-  $dbName = 'yabukib';
-  $dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
-  $dbUser = 'root';
-  $dbPass = '';
-  
-  $db = new PDO($dsn,$dbUser,$dbPass);
-  $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+//データベース接続設定
+$dbServer = '127.0.0.1';
+$dbName = 'yabukib';
+$dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
+$dbUser = 'root';
+$dbPass = '';
 
-  $sql = 'INSERT INTO customers (mail,password,name,address,tel) VALUES (?,?,?,?,?)';
-  $prepare =$db->prepare($sql);
-  $data[] = $mail; 
-  $data[] = $pass;
-  $data[] = $name;
-  $data[] = $address;
-  $data[] = $tel;
-  
-  
-  $prepare->execute($data);
+$db = new PDO($dsn,$dbUser,$dbPass);
+$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-  $db = null;
-
-  echo $name;
-  echo'さんを追加しました。 <br/>';
+$sql = 'INSERT INTO customers (mail,password,name,address,tel) VALUES (?,?,?,?,?)';
+$prepare =$db->prepare($sql);
+$data[] = $mail; 
+$data[] = $pass;
+$data[] = $name;
+$data[] = $address;
+$data[] = $tel;
 
 
+$prepare->execute($data);
+$db = null;
+
+echo 'そのままログインしますか?';
+echo '<form method="post" action="login.php">';
+echo  '<input type="hidden" name="mail" value="'.$mail.'">';
+echo  '<input type="hidden" name="pass" value="'.$pass.'">';
+echo  '<input type="submit"value="ログイン">';
+echo '</form>';
+
+echo '<form method="get" action="../index.php">';
+echo '<input type="submit" value="スタート画面へ">';
+echo '</form>';
 }
 
-  catch (Exception $e)
-  {
-    echo'ただいま障害により大変ご迷惑をおかけしております。';
-    exit();
-  }
+catch (Exception $e)
+{
+echo'ただいま障害により大変ご迷惑をおかけしております。';
+exit();
+}
 
- ?>
+?>
 
- <a href="../account_login/login.html">ログイン画面へ</a>
-</body>
-</html>
+
+
