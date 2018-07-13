@@ -65,8 +65,8 @@ $ua_list = array('iPhone','iPad','iPod','Android');
   }
  } return false;
 }	
-	$h = 160; // リサイズしたい大きさを指定
-	$w = 90;
+	$h = 200; // リサイズしたい大きさを指定
+	$w = 200;
 	
 	$file = $_FILES['image']['tmp_name']; // 加工したいファイルを指定
 	
@@ -127,7 +127,7 @@ if (ua_smt() == true) {
 }
 		// echo $mine;
 		// 新しく描画するキャンバスを作成
-		$canvas = imagecreatetruecolor($w, $h);
+		$canvas = imagecreatetruecolor(150,200);
 		imagecopyresampled($canvas, $original_image, 0,0,0,0, $w, $h, $original_w, $original_h);
 		
 		$resize_path = './new.'.$mine.''; // 保存先を指定

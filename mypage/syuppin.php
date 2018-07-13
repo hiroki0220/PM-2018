@@ -53,7 +53,7 @@ try
 		if (isset($person['type'], $person['image'])) {//画像がある場合
 			$type = $person['type'];
 			$image = base64_encode($person['image']);
-			echo '<a href="detail.php?id='.$person['id'].'">';
+			echo '<a href="sell_detail.php?id='.$person['id'].'">';
 			echo "<br><img src='data:${type};base64,${image}'><br>";
 			echo "</a>";
 		  } else {//画像がない場合
