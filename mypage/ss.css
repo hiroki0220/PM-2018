@@ -1,61 +1,3 @@
-<?php
-session_start();
-session_regenerate_id(true);
-if(isset($_SESSION['login'])==false)
-{
-	echo 'ログインされていません。<br />';
-	echo '<a href="../account_login/login.html">ログイン画面へ</a>';
-	exit();
-}
-else
-{
-	echo $_SESSION['name'];
-	echo 'さんログイン中<br />';
-	echo '<br />';
-}
-?>
-
-<?php
-
-try
-{
-
-	$dbServer = '127.0.0.1';
-	$dbName = 'yabukib';
-	$dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
-	$dbUser = 'root';
-	$dbPass = '';
-	
-	$db= new PDO($dsn,$dbUser,$dbPass);
-	$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	
-	// $sql='SELECT name,id,mail,tel,address,password FROM customers WHERE id=:id';
-
-	$sql='SELECT id,image,type,name,price,status,memo FROM products WHERE seller_id=:seller_id';
-
-
-	$prepare=$db->prepare($sql);
-	$prepare->bindValue(':seller_id', $_SESSION['id'], PDO::PARAM_INT);
-	$prepare->execute();
-	$db=null;
-	
-	
-	$result=$prepare->fetchAll(PDO::FETCH_ASSOC);
-
-  }
-
-	catch(Exception $e)
-	{
-		echo 'ただいま障害により大変ご迷惑をお掛けしております。';
-		exit();
-	}?>
-
-<html>
-<head>
-<meta charset="UTF-8">
-<title>中古教科書フリマシステム</title>
-<style>
-
 @charset "Shift_JIS";
 
 /*============================================
@@ -98,19 +40,49 @@ h1 a {text-decoration:none;} 			/*リンクの下線を無くす*/
 メインメニュー
 ============================================*/
 ul#menu {
-	height:200px; background-color:#eeeeee; font-weight:bold;
+	height:42px; background-color:#eeeeee; font-weight:bold;
+}
+li#menu01,li#menu02,li#menu03,li#menu04,li#menu05 {
+	float:left;			/*リスト項目を横に並べる*/
+	display:inline;			/*リスト項目をインライン表示にする*/
+	list-style-type:none;		/*リストマーカー無しにする*/
+	background-repeat:no-repeat; 	/*背景画像を繰り返さない*/	
 }
 
-
 /*ボタン01～05にはそれぞれ異なる背景画像を指定する*/
-
+li#menu01 {
+	width:164px; height:42px;	/*背景画像に合わせたサイズ指定*/
+	background-image:url("images/bg_menu01.jpg");	/*背景画像*/
+}
+li#menu02 {
+	width:156px; height:42px;	/*背景画像に合わせたサイズ指定*/
+	background-image:url("images/bg_menu02.jpg");	/*背景画像*/
+}
+li#menu03 {
+	width:156px; height:42px;	/*背景画像に合わせたサイズ指定*/
+	background-image:url("images/bg_menu03.jpg");	/*背景画像*/
+}
+li#menu04 {
+	width:156px; height:42px;	/*背景画像に合わせたサイズ指定*/
+	background-image:url("images/bg_menu04.jpg");	/*背景画像*/
+}
+li#menu05 {
+	width:164px; height:42px;	/*背景画像に合わせたサイズ指定*/
+	background-image:url("images/bg_menu05.jpg");	/*背景画像*/
+}
+ul#menu a {
+	display:block;				/*リンクをブロック表示にする*/
+	height:42px; padding-top:4px; text-align:center;
+	text-decoration:none; 			/*リンクの下線を無くす*/
+	font-family:Arial, Helvetica, sans-serif;	/*フォントの種類*/
+}
 
 /*============================================
 サブメニュー（左カラム）
 ============================================*/
 div#submenu {
-	width:140px;			/*幅の指定*/
-	margin:10px 10px 10px 10px;	/*位置調整（IE6のバグに注意）*/
+	width:160px;			/*幅の指定*/
+	margin:10px 10px 10px 25px;	/*位置調整（IE6のバグに注意）*/
 	display:inline;			/*IE6のマージン算出のバグ対策*/
 	float:left;			/*サブメニューのカラムを左寄せにする*/
 }
@@ -147,6 +119,52 @@ ul#submenu_body li a:hover {
 	background-color:#ffffff;	/*リンクにマウスが乗ったら色を変える*/
 }
 
+/*============================================
+コンテンツ（中央と右の2カラム全体）
+============================================*/
+div#content {
+	width:560px; margin:10px 20px 10px 0px;	/*幅の指定と位置調整*/
+	float:right;				/*2カラム全体を右寄せにする*/
+}
+
+/*============================================
+ニュース（中央カラム）
+============================================*/
+div#news {
+	width:390px; margin-right:5px; padding-top:10px; /*幅の指定と位置調整*/
+	float:left;					/*カラムを左寄せにする*/
+	background-image:url("images/bar_news.gif");	/*中央カラムの背景画像*/
+	background-repeat:no-repeat;			/*背景画像を繰り返さない*/
+}
+
+/*見出し・段落・水平線のスタイル指定*/
+h2 {
+	font-size:100%; margin-bottom:10px; padding-left:25px;
+	font-size:95%; border-bottom:solid 1px #cccccc;
+	background-image:url("images/icon.gif");
+	background-repeat:no-repeat; background-position:left center;
+}
+h3 {font-size:90%; margin-left:5px;}
+p {font-size:90%; margin:10px 0px 10px 10px; text-indent:10px;}
+hr {height:1px; border:solid 1px #cccccc; margin-bottom:30px;}
+
+/*============================================
+ピックアップ（右カラム）
+============================================*/
+div#pickup {
+	width:150px; padding-top:10px; 		/*幅の指定と位置調整*/
+	float:right;				/*カラムを右寄せにする*/
+	background-image:url("images/bar_pickup.gif");	/*右カラムの背景画像*/
+	background-repeat:no-repeat;		 /*背景画像を繰り返さない*/
+}
+div#pickup ul {
+	margin-left:10px; 		/*左マージンを10px空ける*/
+	font-size:90%;			/*フォントサイズを90%にする*/
+}
+div#pickup li {
+	list-style-type:none; 		/*リストマーカー無しにする*/
+	line-height:1.8;		/*行の高さを1.8倍にする*/
+}
 
 /*============================================
 フッタ
@@ -163,61 +181,3 @@ address {
 	font-size:small;			 /*フォントサイズを小さくする*/
 	padding:5px 0px 5px 0px;		 /*要素内容の位置調整*/
 }
-
-
-</style>
-</head>
-<body>
-<!-- メインメニュー -->
-<ul id="menu">
-<hr><table><tr>
-  <?php
-	 foreach ( $result as $person ) {
-
-		echo $person['name'];//手抜き
-		echo "<br/>";
-		if (isset($person['type'], $person['image'])) {//画像がある場合
-			$type = $person['type'];
-			$image = base64_encode($person['image']);
-			
-			echo '<a href="../buy/detail.php?id='.$person['id'].'">';
-			
-			echo "<br><img src='data:${type};base64,${image}'><br>";
-			echo "</a>";
-		  } else {//画像がない場合
-			echo "画像なし"; //2重引用符の中に変数を書くと展開される。
-			echo "<br/>";
-		  } 
-		 
-		  
-	}
-	?></tr></table>
-	</ul>
-	
-<!-- サブメニュー（左カラム） -->
-	<div id="submenu">
-		<div id="submenu_header">目的で探す</div>
-		<ul id="submenu_body">
-			<li><a href="xxx.html">CSSの適用</a></li>
-			<li><a href="xxx.html">セレクタ</a></li>
-			<li><a href="xxx.html">フォント</a></li>
-			<li><a href="xxx.html">テキスト</a></li>
-			<li><a href="xxx.html">文字色・背景</a></li>
-			<li><a href="xxx.html">幅・高さ・余白</a></li>
-			<li><a href="xxx.html">ボーダー</a></li>
-			<li><a href="xxx.html">表示・配置</a></li>
-			<li><a href="xxx.html">リスト</a></li>
-			<li><a href="xxx.html">テーブル</a></li>
-			<li><a href="xxx.html">生成内容の挿入</a></li>
-			<li><a href="xxx.html">インターフェース</a></li>
-			<li><a href="xxx.html">フィルタ・ズーム</a></li>
-			<li><a href="xxx.html">テキスト（IE独自）</a></li>
-			<li><a href="xxx.html">印刷</a></li>
-			<li><a href="xxx.html">音声</a></li>
-		</ul>
-	</div>
-	<form method="get" action="../top.php"> 
-    <p><input type="submit" value="トップへ"></p>
-    </form>
-</body>
-</html>

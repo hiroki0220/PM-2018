@@ -65,7 +65,9 @@ try
 
 マイページ<br />
 <br />
-
+<form action="./sell/sell_form.php">
+<button>出品</button> 
+</form>
 <form action="./tourokuka.php">
 <button>登録情報</button> 
 </form>
@@ -74,7 +76,9 @@ try
 <button>出品情報</button> 
 </form>
 
-
+ <form method="get" action="../top.php"> 
+    <p><input type="submit" value="トップへ"></p>
+    </form>
 <a href="../account_login/logout.php">ログアウト</a><br />
 
 

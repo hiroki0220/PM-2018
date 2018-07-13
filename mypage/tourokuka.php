@@ -80,12 +80,16 @@ try
 
 
 <html>
+	
 <head>
+
 <meta charset="UTF-8">
 <title>中古教科書フリマシステム</title>
 </head>
 <body>
-
+<form method="get" action="../top.php"> 
+    <p><input type="submit" value="トップへ"></p>
+    </form>
 
 </body>
 </html>
