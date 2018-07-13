@@ -203,6 +203,7 @@ if (ua_smt() == true) {
 		
 		
 	}
+}
 		else {
 			echo "画像が入力されていません。<br/>";
 		}
@@ -271,7 +272,6 @@ if (ua_smt() == true) {
 		}
 
 
-}
 }
 catch(Exception $e)
 {
