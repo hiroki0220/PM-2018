@@ -272,8 +272,12 @@ if (ua_smt() == true) {
 
 
 }
-catch(Exception $e){	echo '対応していないファイル形式です。';
-	exit();}
+}
+catch(Exception $e)
+{
+	echo 'ただいま障害により大変ご迷惑をお掛けしております。';
+	exit();
+}
 	?>
 
 	

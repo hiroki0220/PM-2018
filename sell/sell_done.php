@@ -22,11 +22,7 @@ $type=$_POST['type'];
 
 if (isset($_POST['name'])) {
     try{
-        $dbServer = '127.0.0.1';
-        $dbName = 'yabukib';
-        $dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
-        $dbUser = 'root';
-        $dbPass = '';
+require_once '../conf.php';
 
         $db= new PDO($dsn,$dbUser,$dbPass);
         $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

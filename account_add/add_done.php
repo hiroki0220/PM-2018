@@ -16,11 +16,8 @@ $mail= htmlspecialchars($mail,ENT_QUOTES,'UTF-8');
 $pass = htmlspecialchars($pass,ENT_QUOTES,'UTF-8');
 
 //データベース接続設定
-$dbServer = '127.0.0.1';
-$dbName = 'yabukib';
-$dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
-$dbUser = 'root';
-$dbPass = '';
+require_once '../conf.php';
+
 
 $db = new PDO($dsn,$dbUser,$dbPass);
 $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
