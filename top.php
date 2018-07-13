@@ -23,9 +23,13 @@ else
 <title> 中古教科書フリマシステム</title>
 </head>
 <body>
-
-トップメニュー<br />
-<br />
+	
+	トップメニュー<br />
+	<form method = "post" action = "./buy/search.php">
+	<input type = "text" name = "keyword" "style="width:200px">
+	<input type="submit" value="検索">
+	</form>
+	
 
 <form action="./sell/sell_form.php">
 <button>出品</button> 
@@ -35,10 +39,6 @@ else
 <br />
 <a href="./account_login/logout.php">ログアウト</a><br />
 
-<form method = "post" action = "./buy/search.php">
-<input type = "text" name = "keyword" "style="width:200px">
-<input type="submit" value="検索">
-</form>
 
 <br />
 </body>

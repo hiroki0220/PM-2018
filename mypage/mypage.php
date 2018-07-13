@@ -65,7 +65,7 @@ try
 
 マイページ<br />
 <br />
-<form action="./sell/sell_form.php">
+<form action="../sell/sell_form.php">
 <button>出品</button> 
 </form>
 <form action="./tourokuka.php">
