@@ -73,10 +73,15 @@ else
 	echo $mail;
 	echo'<br/>';
 }
-
+$pass=$_REQUEST['pass'];
 if($pass=='')
 {
 	echo'パスワードが入力されていません。<br/>';
+}
+
+if(preg_match('/\A[a-z\d]{8,16}+\z/i',$pass)==false)
+{
+	echo'パスワードが適切ではありません。<br/>';
 }
 
 if($pass!=$pass2)
@@ -84,7 +89,7 @@ if($pass!=$pass2)
 	echo'パスワードが一致しません。<br/>';
 }
 
-if($name==''||$address==''||$tel==''||$mail==''||$pass==''||$pass!=$pass2)
+if($name==''||$address==''||$tel==''||$mail==''||$pass==''||$pass!=$pass2||preg_match('/\A[a-z\d]{8,16}+\z/i',$pass)==false)
 {
 	echo'<form>';
 	echo'<input type="button"onclick="history.back()"value="戻る">';
