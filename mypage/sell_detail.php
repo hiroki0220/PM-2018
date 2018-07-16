@@ -1,6 +1,18 @@
 <?php
 session_start();
 session_regenerate_id(true);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>中古教科書フリマシステム</title>
+</head>
+<body>
+<?php
+
+
 if(isset($_SESSION['login'])==false)
 {
 	echo 'ログインされていません。<br />';
@@ -13,10 +25,6 @@ else
 	echo 'さんログイン中<br />';
 	echo '<br />';
 }
-?>
-<?php
-
-
  
 try{
     $id = $_GET['id'];
@@ -51,14 +59,6 @@ catch(Exception $e)
 }
 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>中古教科書フリマシステム</title>
-</head>
-<body>
 
 商品画像<br>
 <?php
@@ -82,11 +82,8 @@ echo $memo;
 echo "<br>";
 ?>
 
-
-<form method="get" action="./syuppin.php"> 
-        <p><input type="submit" value="戻る"></p>
-</form>
 <form method="get" action="../top.php"> 
+        <p><input type="submit" value="戻る"></p>
         <p><input type="submit" value="トップへ"></p>
 </form>
 </body>

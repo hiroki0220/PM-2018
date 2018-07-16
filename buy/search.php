@@ -1,28 +1,36 @@
 <?php
 session_start();
 session_regenerate_id(true);
-if(isset($_SESSION['login'])==false)
-{
-	echo 'ログインされていません。<br />';
-	echo '<a href="../account_login/login.html">ログイン画面へ</a>';
-	exit();
-}
-else
-{
-	echo $_SESSION['name'];
-	echo 'さんログイン中<br />';
-	echo '<br />';
-}
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title> 中古教科書フリマシステム </title>
+</head>
+<body>
 
 <?php
+	if(isset($_SESSION['login'])==false)
+	{
+		echo 'ログインされていません。<br />';
+		echo '<a href="../account_login/login.html">ログイン画面へ</a>';
+		exit();
+	}
+	else
+	{
+		echo $_SESSION['name'];
+		echo 'さんログイン中<br />';
+		echo '<br />';
+	}
 if (isset($_POST['keyword'])){
-try
-{
-
-$keyword=$_POST['keyword'];
-$keyword= htmlspecialchars($keyword,ENT_QUOTES,'UTF-8');
-    
+	try
+	{
+		
+		$keyword=$_POST['keyword'];
+		$keyword= htmlspecialchars($keyword,ENT_QUOTES,'UTF-8');
+		
 require_once '../conf.php';
 $db= new PDO($dsn,$dbUser,$dbPass);
 $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -50,13 +58,7 @@ foreach ($result as $person) {
 		echo "<br/>";
 	  }
 	
-	// echo $person['price'];//手抜き
-	// echo "円";
-	// echo "<br/>";
-	// echo $person['status'];//手抜き
-	// echo "<br/>";
-	// echo $person['memo'];//手抜き
-	// echo "<br/>";
+
   }
 //   //結果を表示
 // echo "name = ".$result['name'];
@@ -71,14 +73,6 @@ catch(Exception $e)
 }
 }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title> 中古教科書フリマシステム </title>
-</head>
-<body>
 <form  action="../top.php"> 
         <p><input type="submit" value="トップへ"></p>
 </form>

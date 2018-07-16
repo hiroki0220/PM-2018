@@ -1,12 +1,6 @@
 <?php
 session_start();
 session_regenerate_id(true);
-if(isset($_SESSION['login'])==true)
-{
-	echo 'ログインされています。<br />';
-	echo '<a href="../account_login/logout.php">ログアウト画面へ</a>';
-	exit();
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +10,14 @@ if(isset($_SESSION['login'])==true)
 <title> 中古教科書フリマシステム </title>
 </head>
 <body>
-
+<?php
+if(isset($_SESSION['login'])==true)
+{
+	echo 'ログインされています。<br />';
+	echo '<a href="../account_login/logout.php">ログアウト画面へ</a>';
+	exit();
+}
+?>
 アカウント登録 <br/>
 <br/>
 <form method="post"action="add_check.php">
@@ -29,12 +30,12 @@ if(isset($_SESSION['login'])==true)
 メールアドレスを入力してください。 <br/>
 <input type="text"name="mail"style="width:200px"><br/>
 パスワードを入力してください。 <br/>
-<input type="text"name="pass"style="width:100px"><br/>
+<input type="password"name="pass"style="width:100px"><br/>
 パスワードをもう一度入力してください。<br/>
-<input type="text"name="pass2"style="width:100px"><br/>
+<input type="password"name="pass2"style="width:100px"><br/>
 <br/>
 <input type="button" onclick="history.back()"value="戻る">
-<input type="submit" value="OK">
+<input type="submit" value="OK" style="width:45px; height:25px">
 </form>
 
 </body>

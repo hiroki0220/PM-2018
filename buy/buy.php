@@ -1,20 +1,31 @@
 <?php
 session_start();
 session_regenerate_id(true);
-if(isset($_SESSION['login'])==false)
-{
-	echo 'ログインされていません。<br />';
-	echo '<a href="../account_login/login.html">ログイン画面へ</a>';
-	exit();
-}
-else
-{
-	echo $_SESSION['name'];
-	echo 'さんログイン中<br />';
-	echo '<br />';
-}
 ?>
-<?php
+
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title> 中古教科書フリマシステム</title>
+    </head>
+    
+    <body>
+        <?php
+        if(isset($_SESSION['login'])==false)
+        {
+            echo 'ログインされていません。<br />';
+            echo '<a href="../account_login/login.html">ログイン画面へ</a>';
+            exit();
+        }
+        else
+        {
+            echo $_SESSION['name'];
+            echo 'さんログイン中<br />';
+            echo '<br />';
+        }
 
     $id = $_GET['id'];
     $id= htmlspecialchars($id,ENT_QUOTES,'UTF-8');
@@ -51,17 +62,6 @@ require_once '../conf.php';
     }
 
 ?>
-
-<!DOCTYPE html>
-<html>
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title> 中古教科書フリマシステム</title>
-    </head>
-
-    <body>
     <form method="get" action="../top.php"> 
     <p><input type="submit" value="トップへ"></p>
     </form>

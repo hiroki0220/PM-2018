@@ -1,12 +1,6 @@
 <?php
 session_start();
 session_regenerate_id(true);
-if(isset($_SESSION['login'])==true)
-{
-	echo 'ログインされています。<br />';
-	echo '<a href="../account_login/logout.php">ログアウト画面へ</a>';
-	exit();
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,6 +12,12 @@ if(isset($_SESSION['login'])==true)
 <body>
 
 <?php
+if(isset($_SESSION['login'])==true)
+{
+	echo 'ログインされています。<br />';
+	echo '<a href="../account_login/logout.php">ログアウト画面へ</a>';
+	exit();
+}
 
 $name=$_POST['name'];
 $address=$_POST['address'];

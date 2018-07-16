@@ -1,6 +1,15 @@
 <?php
 session_start();
 session_regenerate_id(true);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 中古教科書フリマシステム</title>
+</head>
+<body>
+<?php
 if(isset($_SESSION['login'])==false)
 {
 	echo 'ログインされていません。<br />';
@@ -13,8 +22,6 @@ else
 	echo 'さんログイン中<br />';
 	echo '<br />';
 }
-?>
-<?php
 
 try
 {
@@ -51,13 +58,6 @@ require_once '../conf.php';
 	}
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title> 中古教科書フリマシステム</title>
-</head>
-<body>
 
 マイページ<br />
 <br />
@@ -73,6 +73,7 @@ require_once '../conf.php';
 </form>
 
  <form method="get" action="../top.php"> 
+ 
     <p><input type="submit" value="トップへ"></p>
     </form>
 <a href="../account_login/logout.php">ログアウト</a><br />
